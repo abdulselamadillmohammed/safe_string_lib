@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "safestr.h"
 
 int main(int argc, char *argv[]) {
     String *str;
