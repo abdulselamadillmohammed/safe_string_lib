@@ -1,5 +1,17 @@
 #include "safestr.h"
 
+void copy(void *dst, const void *src, const unsigned int n){
+    const char *psrc;
+    char *pdst;
+    unsigned int x;
+
+    for (x=n, psrc=(const char *)src, pdst=(char *)dst; 
+        x; psrc++, pdst++)
+        *pdst = *psrc;
+
+    return;
+}
+
 unsigned int length(const char *str){
     int n;
     const char *p;
@@ -9,7 +21,7 @@ unsigned int length(const char *str){
     return 0;
 }
 
-String *init(char *str){
+String *init(const char *str){
     unsigned int n, size;
     String *p;
 
@@ -19,11 +31,11 @@ String *init(char *str){
     assert(p);
 
     *p = (String){};
-    memcpy(p->data, str, n);
+    copy(p->data, str, n);
     return p;
 }
 
-int main(){
+int main(int argc, char *argv[]){
     String *str;
 
     str = init("Hello ");
