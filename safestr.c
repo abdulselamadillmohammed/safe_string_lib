@@ -6,10 +6,14 @@ void copy(void *dst, const void *src, const unsigned int n){
     unsigned int x;
 
     for (x=n, psrc=(const char *)src, pdst=(char *)dst; 
-        x; psrc++, pdst++)
+        x; psrc++, pdst++, x--)
         *pdst = *psrc;
 
     return;
+}
+
+char *fold(String *str){
+    return str->data;
 }
 
 unsigned int length(const char *str){
@@ -19,6 +23,26 @@ unsigned int length(const char *str){
     for (n = 0, p = str; *p; p++, n++);
  
     return 0;
+}
+
+bool concat(String *dst, const char *src){
+    unsigned int n, cursize, size;
+    char *cp;
+    String *p;
+
+    n = length(src);
+    cursize = (dst->count + 1) + sizeof(struct s_string);
+    size = cursize + n;
+    p = (String *)realloc(dst, size);
+
+    if (!p)
+        return false;
+
+    cp = p->data + p->count;
+    copy(cp, src, n);
+    p->count += n;
+
+    return true;
 }
 
 String *init(const char *str){
@@ -40,10 +64,10 @@ int main(int argc, char *argv[]){
 
     str = init("Hello ");
     printf("'%s'\n", str->data);
-    //concat(str, "THERE");
+    concat(str, "THERE");
  
-    //printf("%s\n",fold(str));
+    printf("%s\n",fold(str));
 
-    //uninit(str);
+    uninit(str);
     return 0;
 }

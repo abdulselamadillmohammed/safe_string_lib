@@ -17,6 +17,8 @@ struct s_string {
 
 typedef struct s_string String;
 
+char *fold(String *);
+
 void copy(void*, const void*, const unsigned int);
 
 unsigned int length(const char*);

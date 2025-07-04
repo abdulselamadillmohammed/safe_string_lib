@@ -1,8 +1,8 @@
 opt=-std=c2x
 
-all: clean safestr.so
+all: clean safestr
 
-safestr.so: safestr.o
+safestr: safestr.o
 		cc $^ -o $@ ${opt}
 
 safestr.o: safestr.c
