@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
 
     p = argv[1];
 
-    strcpy(str, p);
+    strncpy(str, p, 7);
 
     printf("%s\n", str);
 
