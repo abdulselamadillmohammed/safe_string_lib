@@ -17,7 +17,9 @@ struct s_string {
 
 typedef struct s_string String;
 
-String *init(char*);
-bool concat(String*, char*);
+unsigned int length(const char*);
+
+String *init(const char*);
+bool concat(String*, const char*);
 
 int main(int, char**);
