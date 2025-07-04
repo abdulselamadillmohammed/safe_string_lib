@@ -42,6 +42,9 @@ bool concat(String *dst, const char *src){
     copy(cp, src, n);
     p->count += n;
 
+    cp = p->data + p->count;
+    *cp = 0;
+
     return true;
 }
 
@@ -56,6 +59,7 @@ String *init(const char *str){
 
     *p = (String){};
     copy(p->data, str, n);
+    p->count = n;
     return p;
 }
 
