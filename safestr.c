@@ -22,7 +22,7 @@ unsigned int length(const char *str){
 
     for (n = 0, p = str; *p; p++, n++);
  
-    return 0;
+    return n;
 }
 
 bool concat(String *dst, const char *src){
